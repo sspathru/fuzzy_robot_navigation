@@ -1,0 +1,126 @@
+[System]
+Name='FCproject22'
+Type='mamdani'
+Version=2.0
+NumInputs=4
+NumOutputs=2
+NumRules=40
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='distance(d_g)'
+Range=[0 25]
+NumMFs=7
+MF1='AZ':'trapmf',[0 0 2.5 3.75]
+MF2='VVL':'trimf',[2.5 3.75 5]
+MF3='VL':'trimf',[3.75 5 6.25]
+MF4='L':'trimf',[5 6.25 7.5]
+MF5='M':'trimf',[6.25 7.5 8.75]
+MF6='H':'trimf',[7.5 8.75 10]
+MF7='VH':'smf',[8.75 10]
+
+[Input2]
+Name='angle(phi_g)'
+Range=[-180 180]
+NumMFs=7
+MF1='NH':'trimf',[-180 -180 -120]
+MF2='NM':'trimf',[-180 -120 -60]
+MF3='NL':'trimf',[-120 -60 0]
+MF4='AZ':'trimf',[-60 0 60]
+MF5='PL':'trimf',[0 60 120]
+MF6='PM':'trimf',[60 120 180]
+MF7='PH':'trimf',[120 180 180]
+
+[Input3]
+Name='feed_forward_velocity(r_dot)'
+Range=[0 1]
+NumMFs=7
+MF1='AZ':'trimf',[0 0 0.15]
+MF2='VL':'trimf',[0 0.15 0.3]
+MF3='L':'trimf',[0.15 0.3 0.5]
+MF4='M':'trimf',[0.3 0.5 0.7]
+MF5='H':'trimf',[0.5 0.7 0.85]
+MF6='VH':'trimf',[0.7 0.85 1]
+MF7='VVH':'trimf',[0.85 1 1]
+
+[Input4]
+Name='Rotation_velocity(phi_dot)'
+Range=[-60 60]
+NumMFs=7
+MF1='NH':'trimf',[-60 -60 -40]
+MF2='NM':'trimf',[-60 -40 -20]
+MF3='NL':'trimf',[-40 -20 0]
+MF4='AZ':'trimf',[-20 0 20]
+MF5='PL':'trimf',[0 20 40]
+MF6='PM':'trimf',[20 40 60]
+MF7='PH':'trimf',[40 60 60]
+
+[Output1]
+Name='feed_forward_acceleration(r_dot_dot)'
+Range=[-0.2 0.2]
+NumMFs=7
+MF1='NH':'trapmf',[-0.2 -0.2 -0.175 -0.15]
+MF2='NM':'trimf',[-0.175 -0.15 -0.025]
+MF3='NL':'trimf',[-0.15 -0.05 0]
+MF4='AZ':'trimf',[-0.025 0 0.025]
+MF5='PL':'trimf',[0 0.025 0.05]
+MF6='PM':'trimf',[0.025 0.05 0.1]
+MF7='PH':'trapmf',[0.05 0.1 0.2 0.2]
+
+[Output2]
+Name='Rotational_acceleration(phi_dot_dot)'
+Range=[-20 20]
+NumMFs=7
+MF1='NH':'trimf',[-20 -20 -15]
+MF2='NM':'trimf',[-20 -15 -5]
+MF3='NL':'trimf',[-15 -5 0]
+MF4='AZ':'trimf',[-5 0 5]
+MF5='PL':'trimf',[0 5 15]
+MF6='PM':'trimf',[5 15 20]
+MF7='PH':'trimf',[15 20 20]
+
+[Rules]
+1 0 0 0, 1 0 (1) : 1
+2 0 0 0, 2 0 (1) : 1
+3 0 0 0, 3 0 (1) : 1
+4 0 0 0, 4 0 (1) : 1
+5 0 0 0, 5 0 (1) : 1
+6 0 0 0, 6 0 (1) : 1
+7 0 0 0, 7 0 (1) : 1
+0 1 0 0, 0 1 (1) : 1
+0 2 0 0, 0 2 (1) : 1
+0 3 0 0, 0 3 (1) : 1
+0 4 0 0, 0 4 (1) : 1
+0 5 0 0, 0 5 (1) : 1
+0 6 0 0, 0 6 (1) : 1
+0 7 0 0, 0 7 (1) : 1
+0 0 1 0, 7 0 (1) : 1
+0 0 0 1, 0 7 (1) : 1
+0 0 0 2, 0 6 (1) : 1
+0 0 0 3, 0 5 (1) : 1
+0 0 0 4, 0 4 (1) : 1
+0 0 0 5, 0 3 (1) : 1
+0 0 0 6, 0 2 (1) : 1
+0 0 0 7, 0 1 (1) : 1
+0 1 0 0, 1 0 (1) : 1
+0 7 0 0, 1 0 (1) : 1
+0 2 0 0, 1 0 (1) : 1
+0 6 0 0, 1 0 (1) : 1
+0 4 0 0, 7 0 (1) : 1
+1 0 7 0, 1 0 (1) : 1
+1 0 6 0, 1 0 (1) : 1
+1 0 5 0, 1 0 (1) : 1
+2 0 7 0, 1 0 (1) : 1
+2 0 6 0, 1 0 (1) : 1
+7 7 0 0, 7 0 (1) : 1
+7 1 0 0, 7 0 (1) : 1
+6 6 0 0, 6 0 (1) : 1
+6 2 0 0, 6 0 (1) : 1
+0 0 0 1, 1 0 (1) : 1
+0 0 0 7, 1 0 (1) : 1
+0 0 0 2, 2 0 (1) : 1
+0 0 0 6, 2 0 (1) : 1
